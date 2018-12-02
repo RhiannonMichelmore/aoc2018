@@ -3,8 +3,6 @@ import math
 import sys
 
 def solve(filepath):
-    twos = 0
-    threes = 0
     with open(filepath,'r') as f:
         codes = f.readlines()
         codes = [x.strip() for x in codes]
