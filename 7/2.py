@@ -35,7 +35,7 @@ def solve(filepath):
     letters = list(letters)
     letters.sort()
 
-    n_workers = 4 #4 for final
+    n_workers = 5 #4 for final
     time_offset = 60 #60 for final
     workers = [Worker() for n in range(n_workers)]
 
