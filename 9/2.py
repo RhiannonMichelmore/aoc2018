@@ -44,7 +44,7 @@ def solve(filepath):
             current_node.next.prev = current_node
 
         current_marble += 1
-        if current_player + 1 >= len(score):
+        if current_player + 1 >= players:
             current_player = 0
         else:
             current_player += 1
