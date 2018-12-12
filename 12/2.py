@@ -15,9 +15,12 @@ def solve(filepath):
             right = rule.split(" ")[2]
             rules[left] = right
 
-    pot_zero = 0
     iterations = 0
-    while iterations < 20:
+    pot_zero = 0
+    prev_total = 0
+    prev_diff = 0
+    same_count = 0
+    while True:
         index = 2
         diff = len(state) - len(state.lstrip('.'))
         pot_zero += 5 - diff
@@ -36,10 +39,21 @@ def solve(filepath):
                 new_state[index] = '.'
             index += 1
         state = "".join(new_state)
+        if total - prev_total == prev_diff and same_count < 100:
+            prev_diff = total - prev_total
+            prev_total = total
+            same_count += 1
+        elif total - prev_total == prev_diff and same_count == 100:
+            print(total,prev_total,total-prev_total)
+            break
+        else:
+            same_count = 0
+            prev_diff = total - prev_total
+            prev_total = total
         iterations += 1
 
-    print(total)
-
+    new_total = total + (50000000000-iterations-1)*prev_diff
+    print(new_total)
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Please provide an input data file path.")
