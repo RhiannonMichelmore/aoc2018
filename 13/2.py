@@ -61,7 +61,6 @@ def collide(idx,c,cs):
     for idy,cn in enumerate(cs):
         if not idy == idx:
             if cn.x == c.x and cn.y == c.y:
-                print(c.x,c.y)
                 return True
     return False
 
