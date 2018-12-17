@@ -191,6 +191,10 @@ int main()
 			}
 		}
 	}
+	for(auto op_num : op_numbers)
+	{
+		std::cout << op_num.first << ", " << op_num.second << std::endl;
+	}
 
 	registers real_reg{0, 0, 0, 0};
 	for(const auto& ins : instructions)
