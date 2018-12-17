@@ -102,8 +102,6 @@ def solve(filepath):
                     contained = False
                     right_edge = curr_coord
                 elif grid[curr_coord[1]][curr_coord[0]+1] == '#':
-                    if contained == True:
-                        contained = True
                     scanning_right = False
                     right_edge = curr_coord
                 curr_coord = (curr_coord[0]+1,curr_coord[1])
