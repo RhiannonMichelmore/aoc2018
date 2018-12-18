@@ -40,9 +40,6 @@ def solve(filepath):
                 if y_val_max > max_y:
                     max_y = y_val_max
 
-    print("X range:",min_x,max_x)
-    print("Y range:",min_y,max_y)
-    print()
     min_x -= 2
     max_x += 2
     max_y += 2
@@ -65,9 +62,6 @@ def solve(filepath):
                 x_val_max = int(cut[1].split("..")[1])
                 for it in range((x_val_max+1)-x_val_min):
                     grid[y_val][(x_val_min-min_x)+it] = '#'
-
-    display(grid)
-    print()
 
     grid[1][500-min_x] = '|'
     flowing = [(500-min_x,1)]
@@ -121,12 +115,20 @@ def solve(filepath):
 
 
     total = 0
+    still = 0
+    moving = 0
     for y in range(min_y,max_y-1):
         for x in range(len(grid[0])):
-            if grid[y][x] == '~' or grid[y][x] == '|':
+            if grid[y][x] == '~':
+                still += 1
+                total += 1
+            elif grid[y][x] == '|':
+                moving += 1
                 total += 1
 
-    print(total)
+    display(grid)
+    print()
+    print("Total:",total,"Still:",still,"Moving:",moving)
 
 def display(g):
     for y in range(len(g)):
