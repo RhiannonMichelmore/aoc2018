@@ -33,7 +33,7 @@ def solve(filepath):
             i = instruction(l[0],int(l[1]), int(l[2]), int(l[3]))
             lines.append(i)
 
-    # after hours of working it out, this code produces the sum of prime factors of whatever the big value turns out to be =.=
+    # after hours of working it out, this code produces the sum of factors of whatever the big value turns out to be =.=
 
     #registers = [0,4,10551403,1,10551403,10551403]
     #registers = [1,8,10551403,2,0,10551404]
@@ -56,21 +56,17 @@ def solve(filepath):
 
     number = max(registers)
     factors = [1,number]
-    factors = factors + prime_factors(number)
+    factors = factors + all_factors(number)
     print(factors)
     print(sum(factors))
 
-def prime_factors(n):
-    i = 2
+def all_factors(n):
     factors = []
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
+    i = 2
+    while i <(n/2)+1:
+        if n%i == 0:
             factors.append(i)
-    if n > 1:
-        factors.append(n)
+        i+=1
     return factors
 
 class instruction:
