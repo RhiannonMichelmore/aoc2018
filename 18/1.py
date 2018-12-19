@@ -21,7 +21,6 @@ def solve(filepath):
     cycle_recording = []
     print()
     while minute < 10000+1:
-        print("Minute",minute)
         after_grid = [[None for x in range(x_size)] for y in range(y_size)]
         for y in range(y_size):
             for x in range(x_size):
@@ -55,7 +54,7 @@ def solve(filepath):
             
         total = woods*lumber_yards
         # probably enough time to converge
-        if minute > 1000:
+        if minute > 600:
             if len(cycle_recording) == 0:
                 cycle_recording.append(total)
             else:
@@ -65,6 +64,7 @@ def solve(filepath):
                     diff = 1000000000-minute
                     mod = diff % cycle_len
                     print(cycle_recording[mod])
+                    print(len(cycle_recording))
                     return
                 else:
                     cycle_recording.append(total)
